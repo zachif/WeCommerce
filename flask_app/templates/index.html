@@ -6,7 +6,54 @@
     <title>WeCommerce</title>
 </head>
 <body>
-    
+    <div>
+        <!--validation stuff-->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %} 
+                {% for message in messages %}
+                    {% if message != "Your password or email doesn't match." %}
+                        <p>{{message}}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <!--end validation stuff-->
+        <h2>Register</h2>
+        <form action="/register" method="post">
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name">
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name">
+            <label for="email">Email:</label>
+            <input type="email" name="email">
+            <label for="password">Password:</label>
+            <input type="text" name="password">
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="text" name="confirm_password">
+            <input type="submit" value="Register">
+        </form>
+    </div>
+    <div>
+        <!--validation stuff-->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %} 
+                {% for message in messages %}
+                    {%if message == "Your password or email doesn't match."%}
+                    <p>{{message}}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <!--end validation stuff-->
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            <label for="lemail">Email:</label>
+            <input type="email" name="lemail">
+            <label for="lpassword">Password:</label>
+            <input type="text" name="lpassword">
+            <input type="submit" value="Login">
+        </form>
+    </div>
     
 </body>
 </html>
