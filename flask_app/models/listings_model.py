@@ -23,7 +23,7 @@ class Listings_model:
         if len(data['description']) < 100 and len(data['description']) > 500:
             flash("desciption must be between 100 and 500 characters.")
             valid=False
-        if not (data['price'] == 0):
+        if not (data['price'] < 0):
             flash("Price must be greater than 0.")
             valid=False
         if valid:
