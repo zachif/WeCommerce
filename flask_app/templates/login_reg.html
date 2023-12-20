@@ -19,7 +19,7 @@
 
                     <div>
 
-                        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages() %}
             {% if messages %} 
                 {% for message in messages %}
                     {% if message != "Your password or email doesn't match." %}

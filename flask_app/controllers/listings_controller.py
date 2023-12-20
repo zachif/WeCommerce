@@ -3,7 +3,7 @@ from flask import render_template, redirect , request , session, flash
 from flask_app.models.users_model import Users
 from flask_app.models.listings_model import Listings
 
-@app.route('WeCommerce/create')
+@app.route('/WeCommerce/create')
 def create_listings():
     return render_template('create_listing.html')
 
@@ -16,16 +16,13 @@ def create_listing_form():
             "price": request.form['price'],
             "seller": session['id']
             }
-    Listings.insertListing(data)
+    Listings.createListing(data)
     return redirect('/create_listings')
 
 
-@app.route('WeCommerce/<int:id>/listings')
-def userListings(id):
-    data = {
-        'seller' : id
-    }
-    return render_template('user_listings.html')
+@app.route('/WeCommerce/your/listings')
+def userListings():
+    return render_template('user_listings.html', Listings.findListingBySeller(session))
 
 @app.route('/edit/<int:id>')
 def edit_listing(id):
@@ -34,7 +31,7 @@ def edit_listing(id):
     }
     return render_template('edit.html', listing = Listings.findListingByID(data))
 
-@app.route('/update_listing', methods =['POST'])
+@app.route('/WeCommerce/update/listing', methods =['POST'])
 def update_listing_form():
     data = {"name": request.form['name'],
             "description": request.form['descripton'],
