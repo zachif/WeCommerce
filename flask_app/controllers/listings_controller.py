@@ -13,14 +13,15 @@ def create_listings():
 
 @app.route('/listing', methods=['POST'])
 def create_listing_form():
-    if not Listings.createListing(request.form):
-        return redirect('/WeCommerce/create')
     data = { 
         "name": request.form['name'],
         "description": request.form['descripton'],
         "price": request.form['price'],
         "seller": session['id']
-        }
+    }
+    print(Listings.createListing(data))
+    if not Listings.createListing(data):
+        return redirect('/WeCommerce/create')
     Listings.createListing(data)
     return redirect('/WeCommerce/create')
 
