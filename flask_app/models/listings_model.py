@@ -4,7 +4,7 @@ from flask import flash
 
 db = 'listings'
 
-class Listings_model:
+class Listings:
     def __init__(self, data):
         self.id=data['id']
         self.seller=data['seller']
