@@ -5,7 +5,7 @@ from flask_app.models.listings_model import Listings
 
 @app.route('/WeCommerce/your/listings')
 def userListings():
-    return render_template('user_listings.html', Listings.findListingBySeller(session))
+    return render_template('user_listings.html', listings=Listings.findListingBySeller(session))
 
 @app.route('/WeCommerce/create')
 def create_listings():
