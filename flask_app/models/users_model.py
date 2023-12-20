@@ -65,11 +65,4 @@ class Users:
             return (connectToMySQL(db).query_db('SELECT id FROM users WHERE email = %(email)s', data))[0]['id']
         return valid
     
-    @classmethod
-    def get_all(cls):
-        query = "SELECT * FROM users;"
-        results = connectToMySQL(db).query_db(query)
-        all_users = []
-        for user in results:
-            all_users.append(cls(user))
-        return all_users
+    
