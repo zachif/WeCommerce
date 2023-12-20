@@ -40,7 +40,7 @@ def login():
 @app.route('/WeCommerce/dashboard')
 def dashboard():
     print(session['id'])
-    return render_template('trying_dash.html', user=(Users.get_user_by_id(session)[0]), listings=(Listings.get_all_listings_not_user(session)))
+    return render_template('dash.html', user=(Users.get_user_by_id(session)[0]), listings=(Listings.get_all_listings_not_user(session)))
 
 @app.route('/logout')
 def logout():
