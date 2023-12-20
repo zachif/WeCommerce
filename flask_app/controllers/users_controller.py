@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
 from flask_app.models.users_model import Users
+from flask_app.models.listings_model import Listings
 
 @app.route('/WeCommerce')
 def home():
@@ -39,7 +40,7 @@ def login():
 @app.route('/WeCommerce/dashboard')
 def dashboard():
     print(session['id'])
-    return render_template('trying_dash.html', user=(Users.get_user_by_id(session)[0]))
+    return render_template('trying_dash.html', user=(Users.get_user_by_id(session)[0]) listings=(Listings.get_all_listings_not_user(session)))
 
 @app.route('/logout')
 def logout():
