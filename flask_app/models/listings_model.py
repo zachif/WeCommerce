@@ -4,7 +4,7 @@ from flask import flash
 
 db = 'listings'
 
-class Listings_model:
+class Listings:
     def __init__(self, data):
         self.id=data['id']
         self.seller=data['seller']
@@ -37,7 +37,7 @@ class Listings_model:
         return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (id == %(id)s)", data)
     
     @classmethod
-    def findListingBySeller(cls,data):
+    def findListingBySeller(cls, data):
         return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (seller == %(id)s)", data)
 
     @classmethod

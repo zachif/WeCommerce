@@ -8,17 +8,6 @@
 </head>
 <body>
     <div class="container py-5">
-        <!--validation stuff-->
-        {% with messages = get_flashed_messages() %}
-            {% if messages %} 
-                {% for message in messages %}
-                    {% if message != "Your password or email doesn't match." %}
-                        <p>{{message}}</p>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-        <!--end validation stuff-->
 
         <div class="row justify-content-center">
 
@@ -33,7 +22,7 @@
                         {% with messages = get_flashed_messages() %}
             {% if messages %} 
                 {% for message in messages %}
-                    {%if message == "Your password or email doesn't match."%}
+                    {% if message != "Your password or email doesn't match." %}
                     <p>{{message}}</p>
                     {% endif %}
                 {% endfor %}
@@ -102,7 +91,7 @@
 
                                 {% for category, message in messages %}
 
-                                    {% if category == 'login' %}
+                                    {%if message == "Your password or email doesn't match."%}
 
                                         <p class="alert alert-danger text-center">{{ message }}</p>
 
@@ -118,17 +107,17 @@
 
                     <div class="mb-3">
 
-                        <label for="email" class="form-label">Email:</label>
+                        <label for="lemail" class="form-label">Email:</label>
 
-                        <input type="text" name="email" id="email" class="form-control">
+                        <input type="text" name="lemail" id="lemail" class="form-control">
 
                     </div>
 
                     <div class="mb-3">
 
-                        <label for="password" class="form-label">Password:</label>
+                        <label for="lpassword" class="form-label">Password:</label>
 
-                        <input type="password" name="password" id="password" class="form-control">
+                        <input type="password" name="lpassword" id="lpassword" class="form-control">
 
                     </div>
 
