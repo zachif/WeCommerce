@@ -20,7 +20,7 @@ class Users:
 
     @classmethod
     def get_user_by_id(cls, data):
-        return connectToMySQL(db).query_db("SELECT first_name FROM users WHERE id = %(id)s;", data)
+        return connectToMySQL(db).query_db("SELECT * FROM users WHERE id = %(id)s;", data)
 
     @classmethod
     def register_user(cls,data):
