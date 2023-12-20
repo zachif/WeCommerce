@@ -38,6 +38,6 @@ def login():
 
 @app.route('/WeCommerce/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    return render_template('trying_dash.html', )
 
 #being nice
