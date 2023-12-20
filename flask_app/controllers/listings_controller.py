@@ -19,12 +19,24 @@ def create_listing_form():
     Listings.insertListing(data)
     return redirect('/create_listings')
 
-@app.route('/edit')
+@app.route('/edit/<int:id>')
 def edit_listing(id):
     data = {
         'id' : id
     }
     return render_template('edit.html', listing = Listings.findListingByID(data))
+
+@app.route('/update_listing', methods =['POST'])
+def update_listing_form():
+    data = {"name": request.form['name'],
+            "description": request.form['descripton'],
+            "price": request.form['price'],
+            "seller": session['id']
+            }
+    valid = Listings.updateListing(data)
+    if valid:
+        return redirect('/create_listing')
+    return redirect('/create_listing')
 
 @app.route('/delete_listing')
 def deleteListing(id):
@@ -32,4 +44,4 @@ def deleteListing(id):
             "id": id
             }
     Listings.deleteListing(data)
-    return redirect('/create_listing')
+    return redirect('/create_listing/'+ str(session['id']))
