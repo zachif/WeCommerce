@@ -36,6 +36,8 @@ def login():
     session['id']=current_user
     return redirect('/WeCommerce/dashboard')
 
-
+@app.route('/WeCommerce/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
 #being nice

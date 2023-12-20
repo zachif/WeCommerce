@@ -23,7 +23,7 @@ class Listings_model:
         if len(data['description']) < 100 and len(data['description']) > 500:
             flash("desciption must be between 100 and 500 characters.")
             valid=False
-        if not (data['price'] == 0):
+        if not (data['price'] < 0):
             flash("Price must be greater than 0.")
             valid=False
         if valid:
@@ -54,3 +54,9 @@ class Listings_model:
             valid=False
         if valid:
             connectToMySQL(db).query_db("UPDATE listings SET name = %(name)s, description = %(description)s, price = %(price)s",data)
+
+    @classmethod
+    def insertListing(cls,data):
+        query = "INSERT INTO listings (name, description, price, seller_id)" VALUES ( %(name)s, %(description)s, %(price)s, %(seller_id)s);"
+        result = connectToMySQL(db).query_db(query,data)
+        return result
