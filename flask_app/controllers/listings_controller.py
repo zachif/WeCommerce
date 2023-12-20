@@ -14,14 +14,15 @@ def create_listings():
 @app.route('/listing', methods=['POST'])
 def create_listing_form():
     if not Listings.createListing(request.form):
-        return redirect('/create_listings')
-    data = { "name": request.form['name'],
-            "description": request.form['descripton'],
-            "price": request.form['price'],
-            "seller": session['id']
-            }
+        return redirect('/WeCommerce/create')
+    data = { 
+        "name": request.form['name'],
+        "description": request.form['descripton'],
+        "price": request.form['price'],
+        "seller": session['id']
+        }
     Listings.createListing(data)
-    return redirect('/create_listings')
+    return redirect('/WeCommerce/create')
 
 @app.route('/edit/<int:id>')
 def edit_listing(id):
