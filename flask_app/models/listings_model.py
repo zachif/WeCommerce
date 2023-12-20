@@ -33,6 +33,10 @@ class Listings:
             return valid
     
     @classmethod
+    def get_all_listings_not_user(cls, data):
+        return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (id != %(id)s)", data)
+
+    @classmethod
     def findListingByID(cls, data):
         return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (id == %(id)s)", data)
     
