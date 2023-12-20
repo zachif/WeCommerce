@@ -9,12 +9,28 @@ def create_listings():
 
 @app.route('/...', methods=['POST'])
 def create_listing_form():
-    if not Listings_model.createListing(request.form):
+    if not Listings.createListing(request.form):
         return redirect('/create_listings')
     data = { "name": request.form['name'],
             "description": request.form['descripton'],
             "price": request.form['price'],
             "seller_id": request.form['seller_id']
             }
-    Listings_model.insertListing(data)
+    Listings.insertListing(data)
     return redirect('/create_listings')
+
+@app.route('/edit')
+def edit_listing(listing_id):
+    data = {
+        'seller_id' : listing_id
+    }
+    session['listing_id'] = listing_id
+    return render_template('edit.html', listing = Listings.findListingByID(data))
+
+@app.route('/delet_listing')
+def deleteListing(listing_id):
+    data = {
+            "seller_id": listing_id
+            }
+    Listings.deleteListing(data)
+    return redirect('/create_listing')

@@ -60,3 +60,9 @@ class Listings:
         query = "INSERT INTO listings (name, description, price, seller_id)" VALUES ( %(name)s, %(description)s, %(price)s, %(seller_id)s);"
         result = connectToMySQL(db).query_db(query,data)
         return result
+    
+    @classmethod
+    def deleteListing(cls,data):
+        query = "DELETE FROM listings WHERE listings_id = %(seller_id)s;"
+        result = connectToMySQL(db).query_db(query,data)
+        return result
