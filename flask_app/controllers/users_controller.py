@@ -36,4 +36,6 @@ def login():
     session['id']=current_user
     return redirect('/WeCommerce/dashboard')
 
+
+
 #being nice
