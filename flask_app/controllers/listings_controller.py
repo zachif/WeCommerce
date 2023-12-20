@@ -9,12 +9,12 @@ def create_listings():
 
 @app.route('/...', methods=['POST'])
 def create_listing_form():
-    if not Listings_model.createListing(request.form):
+    if not Listings.createListing(request.form):
         return redirect('/create_listings')
     data = { "name": request.form['name'],
             "description": request.form['descripton'],
             "price": request.form['price'],
             "seller_id": request.form['seller_id']
             }
-    Listings_model.insertListing(data)
+    Listings.insertListing(data)
     return redirect('/create_listings')
