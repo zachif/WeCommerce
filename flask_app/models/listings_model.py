@@ -37,7 +37,7 @@ class Listings:
         return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (id == %(id)s)", data)
     
     @classmethod
-    def findListingBySeller(cls,data):
+    def findListingBySeller(cls, data):
         return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (seller == %(id)s)", data)
 
     @classmethod
