@@ -57,7 +57,7 @@ class Listings:
 
     @classmethod
     def insertListing(cls,data):
-        query = "INSERT INTO listings (name, description, price, seller_id)" VALUES ( %(name)s, %(description)s, %(price)s, %(seller_id)s);"
+        query = "INSERT INTO listings (name, description, price, seller_id) VALUES ( %(name)s, %(description)s, %(price)s, %(seller_id)s);"
         result = connectToMySQL(db).query_db(query,data)
         return result
     
