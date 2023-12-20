@@ -8,20 +8,25 @@
 </head>
 <body class="bg-image img-responsive" style="background-image: url(../static/images/white_backround.jpg);" >
 
-    <h2>WeCommerce</h2>
+    <div class="d-flex">
+
+        <h2 class="mb-5 p-2 flex-grow-1">WeCommerce</h2>
+
+        <a class="p-2 fs-5" href="/logout">Logout</a>
+
+    </div>
+
     <div class="container">
 
-        <div class="row">
+        <div class="row d-flex align-items-center">
 
-            <h1 class="col-6">Welcome to WeCommerce, {{ user.first_name }}!!!</h1>
-
-            <a href="/logout" class="btn btn-secondary btn-rounded fs-5 w-25 p-3 m-5" data-mdb-ripple-init>Logout</a>
+            <h1 class="col-6 ">View Your Listings</h1>
 
         </div>
 
         <div class="row">
 
-            <h2>Find What You Need</h2>
+            <h3>Find What You Need</h3>
 
             <table class="table table-striped">
 
@@ -34,8 +39,6 @@
                         <th>Item Description</th>
 
                         <th>Item Price</th>
-
-                        <th><a href="#"></a>View</th>
 
                     </tr>
 
@@ -53,11 +56,7 @@
 
                         <td>{{ user.item_price }}</td>
 
-                        <td><a href="#">View</a></td>
-
                         <td>
-
-                            <a href="/" class="btn btn-success">View Listing</a>
 
                             
 
@@ -79,7 +78,7 @@
 
         </div>
 
-        <a href="/" class="btn btn-secondary col-2">Create Listing</a>
+        <a href="/" class="btn btn-secondary col-2 mt-4">Create Listing</a>
 
     </div>
 
