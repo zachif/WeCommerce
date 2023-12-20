@@ -4,7 +4,7 @@ from flask_app.models.users_model import Users
 
 @app.route('/WeCommerce')
 def home():
-    return render_template('index.html')
+    return render_template('trying_login_reg.html')
 
 @app.route("/register", methods=["POST"])
 def register():
