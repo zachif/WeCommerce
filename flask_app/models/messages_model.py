@@ -21,6 +21,6 @@ class Messages:
 
     @classmethod
     def retrieveMessagesByUsers(cls, data):
-        result=connectToMySQL(db).query_db("SELECT * FROM messages WHERE (sender = %(user)s OR sender = %(corrispondant)s) AND (recipiant = %(user)s OR recipiant = %(corrispondant)s)", data)
+        result=connectToMySQL(db).query_db("SELECT * FROM messages WHERE (sender = %(user)s OR sender = %(corrispondant)s) AND (recipiant = %(user)s OR recipiant = %(corrispondant)s) ORDER BY created_at;", data)
         print(result)
         return result
