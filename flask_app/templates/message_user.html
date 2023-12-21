@@ -37,9 +37,11 @@
                     {%for message in messages%}</div>
 
                 <div class="row d-flex justify-content-center">
-
-                    <h5 class="mx-5 col- w-400px">{{message["content"]}}</h5>
-
+                    {% if message["sender"] == sender[0]["id"]%}
+                    <h5 class="mx-5 col- w-400px">{{sender[0]["first_name"]}}: {{message["content"]}}</h5>
+                    {% else %}
+                    <h5 class="mx-5 col- w-400px">{{correspondentData[0]["first_name"]}}: {{message["content"]}}</h5>
+                    {% endif %}
                     {%endfor%}
                     {%endif%}
 
