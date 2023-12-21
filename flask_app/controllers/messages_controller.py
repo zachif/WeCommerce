@@ -4,7 +4,7 @@ from flask_app.models.users_model import Users
 from flask_app.models.listings_model import Listings
 from flask_app.models.messages_model import Messages
 
-@app.route('/WeCommerce/Messages/<int:correspondent>')
+@app.route('/WeCommerce/messages/<int:correspondent>')
 def message(correspondent):
     session['correspondent'] = correspondent
     data={
@@ -12,6 +12,7 @@ def message(correspondent):
         'corrispondant' : session['correspondent']
     }
     messages=Messages.retrieveMessagesByUsers(data)
+    print(messages)
     return render_template("message_user.html", messages=messages)
     
 @app.route('/message')
@@ -24,6 +25,6 @@ def sendMessage():
     Messages.sendMessage(data)
     return redirect('/WeCommerce/Messages/'+str(session['correspondent']))
 
-@app.route('/WeCommerce/your/Messages')
+@app.route('/WeCommerce/your/messages')
 def yourMessages():
     return render_template("your_messages.html", corrispondants=Messages.getCorrispondantsByUser(session))
