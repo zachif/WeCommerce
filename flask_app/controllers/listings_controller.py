@@ -16,10 +16,9 @@ def create_listing_form():
     data = { 
         "name": request.form['name'],
         "description": request.form['description'],
-        "price": request.form['price'],
+        "price": float(request.form['price']),
         "seller": session['id']
     }
-    print(Listings.createListing(data))
     if not Listings.createListing(data):
         return redirect('/WeCommerce/create')
     Listings.createListing(data)
