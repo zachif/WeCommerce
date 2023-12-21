@@ -24,7 +24,7 @@ class Listings:
             flash("Price must be greater than 0.")
             valid=False
         if len(data['description']) < 50 or len(data['description']) > 500:
-            flash("desciption must be between 50 and 500 characters.")
+            flash("description must be between 50 and 500 characters.")
             valid=False
         if valid:
             result=connectToMySQL(db).query_db("INSERT INTO listings (seller_id, name, description, price) VALUES (%(seller)s, %(name)s, %(description)s, %(price)s)", data)
