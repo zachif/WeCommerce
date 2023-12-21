@@ -47,8 +47,11 @@
                 </thead>
 
                 <tbody>
+
                     {% if listings %}
+
                     {% for listing in listings %}
+
                     <tr>
 
                         <td>{{listing['name']}}</td>
@@ -60,8 +63,11 @@
                         <td><a href="/delete/listing/{{listing['id']}}" class="btn btn-danger">Delete</a></td>
 
                     </tr>
+
                     {% endfor %}
+
                     {% endif %}
+
                 </tbody>
 
             </table>
@@ -78,6 +84,5 @@
 
     </div>
 
-    
 </body>
 </html>
