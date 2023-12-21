@@ -29,9 +29,11 @@
         <div class="container">
 
             <div class="row d-flex justify-content-center mt-4 ">
-
-                <a class="col-2" href="">{view message from {user}}</a>
-
+                {%if corrispondants%}
+                {%for corrispondant in corrispondants%}
+                <a class="col-2" href="/WeCommerce/messages/{{corrispondant['id']}}">View message from {{corrispondant['first_name']}}</a>
+                {% endfor %}
+                {% endif %}
             </div>
 
             <div class="row d-flex justify-content-center mt-4">

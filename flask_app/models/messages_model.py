@@ -34,13 +34,18 @@ class Messages:
         corrispondants=[]
         if result:
             for message in result:
-                if not corrispondantIDs.index(message['sender']):
-                    corrispondantIDs.append(message['sender'])
+                corrispondantIDs.append(message['sender'])
+            corrispondantIDs=list(dict.fromkeys(corrispondantIDs))
+            print("#####################################################")
+            print(corrispondantIDs)
             data={"id":0}
             for corrispondantID in corrispondantIDs:
                 data["id"] = corrispondantID
                 corrispondants.append((Users.get_user_by_id(data))[0])
         if corrispondants:
+            print("#####################################################")
+            print(corrispondants)
+            print("#####################################################")
             return corrispondants
 
 
