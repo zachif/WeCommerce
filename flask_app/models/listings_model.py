@@ -34,7 +34,7 @@ class Listings:
     
     @classmethod
     def get_all_listings_not_user(cls, data):
-        return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (id != %(id)s)", data)
+        return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (seller_id != %(id)s)", data)
 
     @classmethod
     def findListingByID(cls, data):
@@ -57,7 +57,10 @@ class Listings:
             flash("desciption must be between 50 and 500 characters.")
             valid=False
         if valid:
+            print('_____________________________________________________')
+            print(valid)
             connectToMySQL(db).query_db("UPDATE listings SET name = %(name)s, description = %(description)s, price = %(price)s WHERE (id = %(id)s)",data)
+            return valid
     
     @classmethod
     def deleteListing(cls,data):

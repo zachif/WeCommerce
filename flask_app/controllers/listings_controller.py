@@ -51,7 +51,7 @@ def edit_listing(id):
     data = {
         'id' : id
     }
-    return render_template('edit.html', listing = (Listings.findListingByID(data))[0])
+    return render_template('edit.html', listing = Listings.findListingByID(data)[0])
 
 @app.route('/update/listing/<int:id>', methods =['POST'])
 def update_listing_form(id):
