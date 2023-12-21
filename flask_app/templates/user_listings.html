@@ -49,6 +49,7 @@
                 </thead>
 
                 <tbody>
+                    {% if listings %}
                     {% for listing in listings %}
                     <tr>
 
@@ -64,6 +65,7 @@
 
                     </tr>
                     {% endfor %}
+                    {% endif %}
                 </tbody>
 
             </table>
