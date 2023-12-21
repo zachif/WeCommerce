@@ -58,6 +58,7 @@ class Listings:
             valid=False
         if valid:
             connectToMySQL(db).query_db("UPDATE listings SET name = %(name)s, description = %(description)s, price = %(price)s WHERE (id = %(id)s)",data)
+            return valid
     
     @classmethod
     def deleteListing(cls,data):
