@@ -18,20 +18,20 @@
 
     <div class="d-flex flex-row mb-3 mx-5 ">
 
-        <h4 class="p-2">Item Name</h4>
+        <h4 class="p-2">Item Name {{listing['name']}}</h4>
 
-        <h4 class="p-2">Item Price</h4>
+        <h4 class="p-2">Item Price ${{listing['price']}}</h4>
 
     </div>
 
     
 
-    <h5 class="mx-5">Posted By <a href="">Message(user-jinja)</a></h5>
+    <h5 class="mx-5">Posted By <a href="">Message{{seller[0]['first_name']}}</a></h5>
 
 
     <div class="d-flex justify-content-center">
 
-        <h4 class="me-5">Description</h4>
+        <h4 class="me-5">Description {{listing['description']}}</h4>
 
     </div>
     

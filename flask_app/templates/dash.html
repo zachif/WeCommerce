@@ -48,30 +48,32 @@
 
                         <th>Item Price</th>
 
-                        <th><a href="#"></a>View</th>
+                        <th>View</th>
 
                     </tr>
 
                 </thead>
 
                 <tbody>
-
+                    {% if listings %}
+                    {% for listing in listings %}
                     <tr>
 
-                        <td>{{ user.name }}</td>
+                        <td>{{listing['name']}}</td>
 
-                        <td>{{ user.item_description }}</td>
+                        <td>{{listing['description']}}</td>
 
-                        <td>{{ user.item_price }}</td>
+                        <td>${{listing['price']}}</td>
 
-                        <td><a href="#">View</a></td>
+                        <td><a href="/WeCommerce/view/{{listing['id']}}">View</a></td>
 
                         
 
                         </td>
 
                     </tr>
-
+                    {% endfor %}
+                    {% endif %}
 
 
                 </tbody>

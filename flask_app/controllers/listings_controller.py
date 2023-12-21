@@ -3,6 +3,20 @@ from flask import render_template, redirect , request , session, flash
 from flask_app.models.users_model import Users
 from flask_app.models.listings_model import Listings
 
+@app.route('/WeCommerce/view/<int:id>')
+def listingView(id):
+    data={
+        'id': id
+    }
+    listing=Listings.findListingByID(data)[0]
+    listing['price']=round(listing['price'],2)
+    data1={
+        "id": listing['seller_id']
+    }
+    seller= Users.get_user_by_id(data1)
+    print(seller)
+    return render_template("view.html", listing=listing, seller=seller)
+
 @app.route('/WeCommerce/your/listings')
 def userListings():
     listings=Listings.findListingBySeller(session)
