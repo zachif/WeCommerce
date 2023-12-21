@@ -50,17 +50,17 @@ class Listings:
         if len(data['name']) < 3:
             flash("Name must be atleast 3 characters.")
             valid=False
-        if len(data['description']) < 100 and len(data['description']) > 500:
-            flash("desciption must be between 100 and 500 characters.")
-            valid=False
-        if not (data['price'] < 0):
+        if not (float(data['price']) > 0):
             flash("Price must be greater than 0.")
             valid=False
+        if len(data['description']) < 50 or len(data['description']) > 500:
+            flash("desciption must be between 50 and 500 characters.")
+            valid=False
         if valid:
-            connectToMySQL(db).query_db("UPDATE listings SET name = %(name)s, description = %(description)s, price = %(price)s",data)
+            connectToMySQL(db).query_db("UPDATE listings SET name = %(name)s, description = %(description)s, price = %(price)s WHERE (id = %(id)s)",data)
     
     @classmethod
     def deleteListing(cls,data):
-        query = "DELETE FROM listings WHERE listings_id = %(seller_id)s;"
+        query = "DELETE FROM listings WHERE id = %(id)s"
         result = connectToMySQL(db).query_db(query,data)
         return result

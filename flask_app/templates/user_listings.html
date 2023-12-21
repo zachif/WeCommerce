@@ -59,9 +59,9 @@
 
                         <td>${{listing['price']}}</td>
 
-                        <td><a href="/" class="btn btn-secondary">Edit</a></td>
+                        <td><a href="/WeCommerce/edit/{{listing['id']}}" class="btn btn-secondary">Edit</a></td>
 
-                        <td><a href="/" class="btn btn-danger">Delete</a></td>
+                        <td><a href="/delete/listing/{{listing['id']}}" class="btn btn-danger">Delete</a></td>
 
                     </tr>
                     {% endfor %}
