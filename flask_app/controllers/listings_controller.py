@@ -35,12 +35,12 @@ def edit_listing(id):
 def update_listing_form():
     data = {"name": request.form['name'],
             "description": request.form['descripton'],
-            "price": request.form['price'],
+            "price": float(request.form['price']),
             "seller": session['id']
             }
     valid = Listings.updateListing(data)
     if valid:
-        return redirect('/create_listing')
+        return redirect('/WeCommerce/create')
     return redirect('/create_listing')
 
 @app.route('/delete_listing')
