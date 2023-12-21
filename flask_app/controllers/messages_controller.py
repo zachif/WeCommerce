@@ -27,4 +27,6 @@ def sendMessage():
 
 @app.route('/WeCommerce/your/messages')
 def yourMessages():
-    return render_template("your_messages.html", corrispondants=Messages.getCorrispondantsByUser(session))
+    corrispondants=Messages.getCorrispondantsByUser(session)
+    print(corrispondants)
+    return render_template("your_messages.html", corrispondants=corrispondants)

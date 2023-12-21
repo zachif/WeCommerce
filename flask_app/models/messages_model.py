@@ -27,17 +27,19 @@ class Messages:
     
     @classmethod
     def getCorrispondantsByUser(cls, data):
-        result=connectToMySQL(db).query_db("SELECT * FROM messages WHERE (recipiant = %(id)s")
+        result=connectToMySQL(db).query_db("SELECT * FROM messages WHERE (recipiant = %(id)s)")
         corrispondantIDs=[]
-        for message in result:
-            if not corrispondantIDs.index(message['sender']):
-                corrispondantIDs.append(message['sender'])
-        data={"id":0}
         corrispondants=[]
-        for corrispondantID in corrispondantIDs:
-            data["id"] = corrispondantID
-            corrispondants.append((Users.get_user_by_id(data))[0])
-        return corrispondants
+        if result:
+            for message in result:
+                if not corrispondantIDs.index(message['sender']):
+                    corrispondantIDs.append(message['sender'])
+            data={"id":0}
+            for corrispondantID in corrispondantIDs:
+                data["id"] = corrispondantID
+                corrispondants.append((Users.get_user_by_id(data))[0])
+        if corrispondants:
+            return corrispondants
 
 
 
