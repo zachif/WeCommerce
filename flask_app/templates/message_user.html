@@ -30,13 +30,13 @@
 
     <div class="d-flex justify-content-center">
 
-        <div class="container w-800px">
+        <div class="container w-800px" >
 
-            <div class="row d-flex justify-content-center mt-4  w-500px  ">
+            <div class="row d-flex justify-content-center mt-4  w-500px;" align="center">
                 <div class="col">{%if messages%}
                     {%for message in messages%}</div>
 
-                <div class="row d-flex justify-content-center">
+                <div class="row d-flex justify-content-center" align="center">
                     {% if message["sender"] == sender[0]["id"]%}
                     <h5 class="mx-5 col- w-400px">{{sender[0]["first_name"]}}: {{message["content"]}}</h5>
                     {% else %}
