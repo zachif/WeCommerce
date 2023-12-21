@@ -36,11 +36,10 @@
 
                         <th>Item Name</th>
 
-                        <th>Item Description</th>
-
                         <th>Item Price</th>
 
                         <th>Edit</th>
+
                         <th>Delete</th>
 
                     </tr>
@@ -48,21 +47,21 @@
                 </thead>
 
                 <tbody>
-
+                    {% if listings %}
+                    {% for listing in listings %}
                     <tr>
 
-                        <td>user.name</td>
+                        <td>{{listing['name']}}</td>
 
-                        <td>user.item_description</td>
+                        <td>${{listing['price']}}</td>
 
-                        <td>user.item_price</td>
+                        <td><a href="/WeCommerce/edit/{{listing['id']}}" class="btn btn-secondary">Edit</a></td>
 
-                        <td><a href="/" class="btn btn-secondary">Edit</a></td>
-
-                        <td><a href="/" class="btn btn-danger">Delete</a></td>
+                        <td><a href="/delete/listing/{{listing['id']}}" class="btn btn-danger">Delete</a></td>
 
                     </tr>
-
+                    {% endfor %}
+                    {% endif %}
                 </tbody>
 
             </table>
