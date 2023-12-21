@@ -27,6 +27,8 @@ class Messages:
     
     @classmethod
     def getCorrispondantsByUser(cls, data):
+        print("#####################################################")
+        print(data["id"])
         result=connectToMySQL(db).query_db("SELECT * FROM messages WHERE (recipiant = %(id)s)")
         corrispondantIDs=[]
         corrispondants=[]
