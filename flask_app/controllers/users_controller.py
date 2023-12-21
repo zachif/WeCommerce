@@ -40,6 +40,12 @@ def login():
 @app.route('/WeCommerce/dashboard')
 def dashboard():
     print(session['id'])
+    user = Users.get_user_by_id(session)
+    if not user:
+        print(f"No user found for session ID: {session.get('id')}")
+        return redirect('/WeCommerce')
+    user = user[0]
+    print(f"User data: {user}")
     listings=(Listings.get_all_listings_not_user(session))
     for listing in listings:
         listing['price']=round(listing['price'],2)
