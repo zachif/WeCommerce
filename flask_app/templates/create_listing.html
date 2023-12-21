@@ -21,6 +21,20 @@
 
     <form action="/listing" method="post">
 
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            {% for category, message in messages %}
+
+                    <p class="alert alert-danger text-center">{{ message }}</p>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
         <div class="form-group row d-flex justify-content-center">
 
             <label for="name" class="col-sm-2 col-form-label fs-3">Name</label>
