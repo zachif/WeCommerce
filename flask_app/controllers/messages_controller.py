@@ -11,9 +11,15 @@ def message(correspondent):
         'user' : session['id'],
         'corrispondant' : session['correspondent']
     }
+    userData={
+        "id":  session["id"]
+    }
+    correspondentData={
+        "id": session['correspondent']
+    }
     messages=Messages.retrieveMessagesByUsers(data)
     print(messages)
-    return render_template("message_user.html", messages=messages, correspondent=session['correspondent'])
+    return render_template("message_user.html", messages=messages, correspondent=session['correspondent'],sender=Users.get_user_by_id(userData),correspondentData=Users.get_user_by_id(correspondentData))
     
 @app.route('/message', methods=['POST'])
 def sendMessage():
@@ -27,4 +33,6 @@ def sendMessage():
 
 @app.route('/WeCommerce/your/messages')
 def yourMessages():
-    return render_template("your_messages.html", corrispondants=Messages.getCorrispondantsByUser(session))
+    corrispondants=Messages.getCorrispondantsByUser(session)
+    print(corrispondants)
+    return render_template("your_messages.html", corrispondants=corrispondants)
