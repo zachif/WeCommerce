@@ -23,7 +23,7 @@ def sendMessage():
         'recipiant' : session['correspondent']
     }
     Messages.sendMessage(data)
-    return redirect('/WeCommerce/Messages/'+str(session['correspondent']))
+    return redirect('/WeCommerce/messages/'+str(session['correspondent']))
 
 @app.route('/WeCommerce/your/messages')
 def yourMessages():
