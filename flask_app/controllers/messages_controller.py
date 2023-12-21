@@ -14,3 +14,16 @@ def message(correspondent):
     messages=Messages.retrieveMessagesByUsers(data)
     return render_template("message_user.html")
     
+@app.route('/message')
+def sendMessage():
+    data={
+        'content': request.form['message'],
+        'sender' : session['id'],
+        'recipiant' : session['correspondent']
+    }
+    Messages.sendMessage(data)
+    return redirect('/WeCommerce/Messages/'+str(session['correspondent']))
+
+@app.route('/WeCommerce/your/Messages')
+def yourMessages():
+    return render_template("your_messages.html", corrispondants=Messages.getCorrispondantsByUser(session))
