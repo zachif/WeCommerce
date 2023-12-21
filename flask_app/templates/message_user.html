@@ -16,15 +16,7 @@
 
         </div>
 
-        <div class="d-flex justify-content-center">
-            {%if messages%}
-            {%for message in messages%}
-
-            <h5 class="mx-5">{{message["content"]}}</h5>
-
-            {%endfor%}
-            {%endif%}
-        </div>
+        
 
         <!--NOT SURE IF REFRESH HAS TO BE IN FORM BUT I TOOK IT OUT FOR NOW-->
 
@@ -36,9 +28,15 @@
 
         <div class = "container bg-primary">
 
-            
-            <!--ADD JINJA HERE FOR ALL THE MESSAGES-->
+            <div class="d-flex justify-content-center">
+            {%if messages%}
+            {%for message in messages%}
 
+            <h5 class="mx-5">{{message["content"]}}</h5>
+
+            {%endfor%}
+            {%endif%}
+            </div>
 
         </div>
 
