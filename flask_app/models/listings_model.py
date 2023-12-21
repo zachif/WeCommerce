@@ -20,14 +20,14 @@ class Listings:
         if len(data['name']) < 3:
             flash("Name must be atleast 3 characters.")
             valid=False
-        if len(data['description']) < 100 and len(data['description']) > 500:
-            flash("desciption must be between 100 and 500 characters.")
-            valid=False
-        if not (data['price'] < 0):
+        if not (float(data['price']) > 0):
             flash("Price must be greater than 0.")
             valid=False
+        if len(data['description']) < 50 or len(data['description']) > 500:
+            flash("desciption must be between 50 and 500 characters.")
+            valid=False
         if valid:
-            result=connectToMySQL(db).query_db("INSERT INTO listings (seller, name, desciption price) VALUES (%(seller)s, %(name)s, %(desciption)s, %(price)s)", data)
+            result=connectToMySQL(db).query_db("INSERT INTO listings (seller_id, name, description, price) VALUES (%(seller)s, %(name)s, %(description)s, %(price)s)", data)
             print('_____________________________________________________')
             print(result)
             return valid
@@ -38,11 +38,11 @@ class Listings:
 
     @classmethod
     def findListingByID(cls, data):
-        return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (id == %(id)s)", data)
+        return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (id = %(id)s)", data)
     
     @classmethod
     def findListingBySeller(cls, data):
-        return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (seller == %(id)s)", data)
+        return connectToMySQL(db).query_db("SELECT * FROM listings WHERE (seller_id = %(id)s)", data)
 
     @classmethod
     def updateListing(cls, data):
@@ -53,7 +53,7 @@ class Listings:
         if len(data['description']) < 100 and len(data['description']) > 500:
             flash("desciption must be between 100 and 500 characters.")
             valid=False
-        if not (data['price'] == 0):
+        if not (data['price'] < 0):
             flash("Price must be greater than 0.")
             valid=False
         if valid:

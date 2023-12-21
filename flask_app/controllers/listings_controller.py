@@ -5,7 +5,10 @@ from flask_app.models.listings_model import Listings
 
 @app.route('/WeCommerce/your/listings')
 def userListings():
-    return render_template('user_listings.html', listings=Listings.findListingBySeller(session))
+    listings=Listings.findListingBySeller(session)
+    for listing in listings:
+        listing['price']=round(listing['price'],2)
+    return render_template('user_listings.html', listings=listings)
 
 @app.route('/WeCommerce/create')
 def create_listings():
@@ -13,26 +16,32 @@ def create_listings():
 
 @app.route('/listing', methods=['POST'])
 def create_listing_form():
+    
+    if request.form['price'] == "":
+        request.form['price'] = 0
+    print(request.form['price'])
     data = { 
         "name": request.form['name'],
         "description": request.form['description'],
         "price": float(request.form['price']),
         "seller": session['id']
     }
-    if not Listings.createListing(data):
+    valid = Listings.createListing(data)
+    if not valid:
         return redirect('/WeCommerce/create')
-    Listings.createListing(data)
-    return redirect('/WeCommerce/create')
+    return redirect('/WeCommerce/your/listings')
 
 @app.route('/edit/<int:id>')
 def edit_listing(id):
     data = {
         'id' : id
     }
-    return render_template('edit.html', listing = Listings.findListingByID(data))
+    return render_template('edit.html', listing = (Listings.findListingByID(data))[0])
 
 @app.route('/WeCommerce/update/listing', methods =['POST'])
 def update_listing_form():
+    if request.form['price'] == "":
+        request.form['price'] = 0
     data = {"name": request.form['name'],
             "description": request.form['descripton'],
             "price": float(request.form['price']),

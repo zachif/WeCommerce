@@ -23,7 +23,7 @@
             {% if messages %} 
                 {% for message in messages %}
                     {% if message != "Your password or email doesn't match." %}
-                    <p>{{message}}</p>
+                    <p class="alert alert-danger text-center">{{message}}</p>
                     {% endif %}
                 {% endfor %}
             {% endif %}
