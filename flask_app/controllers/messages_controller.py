@@ -13,7 +13,7 @@ def message(correspondent):
     }
     messages=Messages.retrieveMessagesByUsers(data)
     print(messages)
-    return render_template("message_user.html", messages=messages)
+    return render_template("message_user.html", messages=messages, correspondent=session['correspondent'])
     
 @app.route('/message', methods=['POST'])
 def sendMessage():
