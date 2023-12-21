@@ -1,58 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Message User</title>
 </head>
-<body class="bg-image img-responsive" style="background-image: url(../static/images/white_backround.jpg);" >
 
-        <div class="d-flex">
+<body class="bg-image img-responsive" style="background-image: url(../static/images/white_backround.jpg);">
 
-            <h2 class="mb-5 p-2 flex-grow-1">WeCommerce</h2>
+    <div class="d-flex">
 
-            <a class="p-2 fs-5" href="/WeCommerce/dashboard"><button class = "btn btn-primary">Dashboard</button></a>
+        <h2 class="mb-5 p-2 flex-grow-1">WeCommerce</h2>
 
-        </div>
+        <a class="p-2 fs-5" href="/WeCommerce/dashboard"><button class="btn btn-primary">Dashboard</button></a>
 
-        
+    </div>
 
-        <!--NOT SURE IF REFRESH HAS TO BE IN FORM BUT I TOOK IT OUT FOR NOW-->
 
-        <div class="d-flex justify-content-center mr-5">
 
-            <a href="/WeCommerce/messages/{{correspondent}}"><button class="mr-5">Refresh</button></a>
-        
-        </div>
+    <!--NOT SURE IF REFRESH HAS TO BE IN FORM BUT I TOOK IT OUT FOR NOW-->
 
-        <div class = "container bg-primary">
+    <div class="d-flex justify-content-center mr-5">
 
-            <div class="d-flex justify-content-center">
-            {%if messages%}
-            {%for message in messages%}
+        <a href="/WeCommerce/messages/{{correspondent}}"><button class="mr-5">Refresh</button></a>
 
-            <h5 class="mx-5 row">{{message["content"]}}</h5>
+    </div>
 
-            {%endfor%}
-            {%endif%}
-            </div>
+    <div class="d-flex justify-content-center">
 
-        </div>
+        <div class="container w-800px">
 
-        <!--ADD A ROUTE FOR REFRESH-->
+            <div class="row d-flex justify-content-center mt-4  w-500px  ">
+                <div class="col">{%if messages%}
+                    {%for message in messages%}</div>
 
-        <form action="/message" method="post">
+                <div class="row d-flex justify-content-center">
 
-            <div class="d-flex justify-content-center m-5">
+                    <h5 class="mx-5 col- w-400px">{{message["content"]}}</h5>
 
-                <textarea name="message" id="" cols="100" rows="1"></textarea>
-                
-                <button> Message</button>
+                    {%endfor%}
+                    {%endif%}
+
+                </div>
 
             </div>
 
-        </form>
+
+
+        </div>
+    </div>
+
+
+
+    <!--ADD A ROUTE FOR REFRESH-->
+
+    <form action="/message" method="post">
+
+        <div class="d-flex justify-content-center m-5">
+
+            <textarea name="message" id="" cols="100" rows="1"></textarea>
+
+            <button> Message</button>
+
+        </div>
+
+    </form>
 
     </div>
 
