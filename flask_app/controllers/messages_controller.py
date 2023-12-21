@@ -15,7 +15,7 @@ def message(correspondent):
     print(messages)
     return render_template("message_user.html", messages=messages)
     
-@app.route('/message')
+@app.route('/message', methods=['POST'])
 def sendMessage():
     data={
         'content': request.form['message'],

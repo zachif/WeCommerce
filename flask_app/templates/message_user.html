@@ -12,18 +12,18 @@
 
             <h2 class="mb-5 p-2 flex-grow-1">WeCommerce</h2>
 
-            <a class="p-2 fs-5" href="#"><button class = "btn btn-primary">Dashboard</button></a>
+            <a class="p-2 fs-5" href=""><button class = "btn btn-primary">Dashboard</button></a>
 
         </div>
 
         <div class="d-flex justify-content-center">
-            {{if messages}}
-            {{for message in messages}}
+            {%if messages%}
+            {%for message in messages%}
 
             <h5 class="mx-5">{{message["content"]}}</h5>
 
-            {{endfor}}
-            {{endif}}
+            {%endfor%}
+            {%endif%}
         </div>
 
         <!--NOT SURE IF REFRESH HAS TO BE IN FORM BUT I TOOK IT OUT FOR NOW-->
@@ -44,7 +44,7 @@
 
         <!--ADD A ROUTE FOR REFRESH-->
 
-        <form action="/" method="post">
+        <form action="/message" method="post">
 
             <div class="d-flex justify-content-center m-5">
 
