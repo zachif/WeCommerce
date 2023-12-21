@@ -16,11 +16,14 @@ def register():
         "password" : request.form["password"],
         "confirm_password" : request.form["confirm_password"]
     }
+    print(data)
     valid=Users.register_user(data)
-    print('_________________________________________________________')
+    
     print (valid)
     if not valid:
         return redirect('/WeCommerce')
+    data['password']=request.form["password"]
+    data['email']=request.form['email']
     current_user=Users.login_user(data)
     session['id']=current_user
     return redirect('/WeCommerce/dashboard')
