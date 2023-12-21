@@ -12,7 +12,7 @@ def message(correspondent):
         'corrispondant' : session['correspondent']
     }
     messages=Messages.retrieveMessagesByUsers(data)
-    return render_template("message_user.html")
+    return render_template("message_user.html", messages=messages)
     
 @app.route('/message')
 def sendMessage():
