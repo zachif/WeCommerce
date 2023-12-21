@@ -9,7 +9,8 @@ def listingView(id):
         'id': id
     }
     listing=Listings.findListingByID(data)[0]
-    listing['price']=round(listing['price'],2)
+    listing['price']=str("%.2f" % (listing['price']))
+    print(listing['price'])
     data1={
         "id": listing['seller_id']
     }
@@ -22,7 +23,7 @@ def userListings():
     listings=Listings.findListingBySeller(session)
     #this loop is for fromating the prices
     for listing in listings:
-        listing['price']=round(listing['price'],2)
+        listing['price']=str("%.2f" % (listing['price']))
     return render_template('user_listings.html', listings=listings)
 
 @app.route('/WeCommerce/create')
